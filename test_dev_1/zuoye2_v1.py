@@ -46,3 +46,4 @@ user1.ight_zms(5000/2,random.randint(10,10)*10,5000,random.randint(10,20))
 
 user2 = XuZhu()
 user2.read()
+print(isinstance(user2,TongLao))
