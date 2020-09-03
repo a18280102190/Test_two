@@ -9,8 +9,20 @@
 =================================================='''
 from time import sleep
 
+import pytest
+import yaml
 from appium import webdriver
 from appium.webdriver.common.mobileby import MobileBy
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
+
+
+def get_contact():
+    with open("./datas/contacts.yaml",encoding='utf-8') as f:
+        #读取这个文件
+        datas = yaml.safe_load(f)
+    return datas
+
 
 
 class TestDW():
@@ -34,16 +46,29 @@ class TestDW():
         # self.driver.quit()
         pass
 
-    def test_xueqiu_add(self):
-        phone_number = 12345679803
-        gender = '男'
-        name = 'zh1'
+    @pytest.mark.parametrize('phone_number,gender,name',get_contact())
+    def test_xueqiu_add(self,phone_number,gender,name):
+        # phone_number = 12345679806
+        # gender = '男'
+        # name = 'zh1'
         self.driver.find_element(MobileBy.XPATH,"//*[@text='通讯录']").click()
         #点击通讯录按钮
-        self.driver.find_element(MobileBy.XPATH,"//*[@text='添加成员']").click()
+        # self.driver.find_element(MobileBy.XPATH,"//*[@text='添加成员']").click()
+        self.driver.find_element(MobileBy.ANDROID_UIAUTOMATOR,
+                                 'new UiScrollable(new UiSelector()'
+                                 '.scrollable(true).instance(0))'
+                                 '.scrollIntoView(new UiSelector()'
+                                 '.text("添加成员").instance(0));').click()
+        #滚动查找
         #点击添加成员按钮
+        sleep(10)
         self.driver.find_element(MobileBy.XPATH,"//*[@text='手动输入添加']").click()
+        # Element = WebDriverWait(self.driver,10,0.5).until(\
+        #     expected_conditions.visibility_of_element_located((MobileBy.XPATH,"//*[@text='手动输入添加']")))
+        #显示等待
+        # print(Element)
         #点击手动输入按钮
+
         self.driver.find_element(MobileBy.XPATH,"//*[@text='必填']").send_keys(name)
         #填写姓名
         self.driver.find_element(MobileBy.XPATH,"//*[@text='男']").click()
@@ -63,8 +88,9 @@ class TestDW():
         assert '添加成功' == toasttext
         #进行断言操作，验证是否添加成功
 
-    def test_xueqiu_delete(self):
-        name = 'zh1'
+    @pytest.mark.parametrize('name',get_contact())
+    def test_xueqiu_delete(self,name):
+        # name = 'zh1'
         self.driver.find_element(MobileBy.XPATH, "//*[@text='通讯录']").click()
         # 点击通讯录按钮
         self.driver.find_element(MobileBy.XPATH,"//*[@text='zh1']").click()
