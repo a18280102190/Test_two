@@ -14,8 +14,8 @@
 =================================================='''
 import pytest
 
-from The_framework_v11.dome_page import DemoPage
-from The_framework_v11.utils import Utils
+from The_framework_v01.dome_page import DemoPage
+from The_framework_v01.utils import Utils
 
 
 class TestLogin:
