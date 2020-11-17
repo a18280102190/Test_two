@@ -9,8 +9,8 @@
 =================================================='''
 from selenium.webdriver.common.by import By
 
-from zuoye_weixin.page1.base_page import BasePage
-from zuoye_weixin.page1.click_add import ClickAdd
+from zuoye_weixin_v1.page1.base_page import BasePage
+from zuoye_weixin_v1.page1.click_add import ClickAdd
 
 
 class Mian(BasePage):
@@ -20,7 +20,7 @@ class Mian(BasePage):
     #打开网站
 
     def goto_department(self):
-        self.find(By.XPATH,"//*[@id='menu_contacts']/span").click()
+        self.find(By.ID,"menu_contacts").click()
         return ClickAdd(self._driver)
 
 

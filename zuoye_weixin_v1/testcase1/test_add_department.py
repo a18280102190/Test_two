@@ -9,7 +9,7 @@
 =================================================='''
 from selenium.webdriver.common.by import By
 
-from zuoye_weixin.page1.mian import Mian
+from zuoye_weixin_v1.page1.mian import Mian
 
 
 class TestAddDepartment():
@@ -25,3 +25,4 @@ class TestAddDepartment():
         print(result)
         assert ' QA部门' in result
         # 对方法进行实例化，并调用
+

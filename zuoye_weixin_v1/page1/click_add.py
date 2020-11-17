@@ -9,8 +9,9 @@
 =================================================='''
 from selenium.webdriver.common.by import By
 
-from zuoye_weixin.page1.base_page import BasePage
-from zuoye_weixin.page1.click_add_department import ClickAddDepartment
+from Test_two.zuoye_weixin.page1.click_add_department import ClickAddDepartment
+from zuoye_weixin_v1.page1.base_page import BasePage
+
 
 
 class ClickAdd(BasePage):

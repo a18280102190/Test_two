@@ -21,6 +21,7 @@ class BasePage():
             option = Options()
             option.debugger_address = "localhost:9222"
             self._driver = webdriver.Chrome(options=option)
+            # self._driver = webdriver.Chrome()
             #调用谷歌浏览器
             # self._driver.maximize_window()
             self._driver.implicitly_wait(5)
