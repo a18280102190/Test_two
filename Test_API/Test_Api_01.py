@@ -39,7 +39,7 @@ def test_update():
     token = get_token()
     data1 = {
         "userid": "plplpl",
-        "name": "老子",
+        "name": "干饭",
         "mobile": "13800000012",
     }
     url = f"https://qyapi.weixin.qq.com/cgi-bin/user/update?access_token={token}"
